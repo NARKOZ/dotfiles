@@ -1,0 +1,52 @@
+#!/bin/sh
+# Copyright (c) 2008 Ryan Tomayko <http://tomayko.com/about>
+set -e
+
+test -z "$1" || echo "$@" | grep -q -- '--help' && {
+	echo "usage: $0 [user@]host ..." 1>&2
+	echo "copy dotfiles to remote host" 1>&2
+	exit 1
+}
+
+cd ~
+for host in "$@"
+do
+  echo "sync: $host"
+  rsync -avz --include-from=- --exclude='*' ./ "${host}:" <<FILES
++ /.inputrc
++ /.bashrc
++ /.dircolors
++ /.bash_completion
++ /.bash_completion.d
++ /.bash_completion.d/**
+
++ /.screenrc
++ /.gitshrc
++ /.gitconfig
++ /.tigrc
+
++ /.vimrc
++ /.gvimrc
++ /.vim
+- /.vim/sessions
+- /.vim/plugin/netrwPlugin.vim
+- /.vim/plugin/ruby_debugger.vim
+- /.vim/swap
++ /.vim/backup
+- /.vim/backup/**
++ /.vim/**
+
++ /bin
++ /bin/ack
++ /bin/git-grab
++ /bin/git-ignore
++ /bin/git-sh
++ /bin/gzball
++ /bin/headers
++ /bin/markdown
++ /bin/memcached-tool
++ /bin/sync-home
++ /bin/tinyurl
+FILES
+
+done

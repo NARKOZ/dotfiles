@@ -1,0 +1,9 @@
+#!/bin/sh
+# build ruby ctags TAGS file in current directory
+ctags -f tags \
+  --recurse \
+  --extra=+f \
+  --links=yes \
+  --tag-relative=yes \
+  --totals=yes \
+  --regex-ruby='/.*alias(_method)?[[:space:]]+:([[:alnum:]_=!?]+),?[[:space:]]+:([[:alnum:]_=!]+)/\\2/f/'
