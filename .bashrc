@@ -199,7 +199,8 @@ if test -z "$BASH_COMPLETION" ; then
     bash=${BASH_VERSION%.*}; bmajor=${bash%.*}; bminor=${bash#*.}
     if [ "$PS1" ] && [ $bmajor -gt 1 ] ; then
         # search for a bash_completion file to source
-        for f in /usr/local/etc/bash_completion \
+        for f in /usr/pkg/etc/back_completion \
+            /usr/local/etc/bash_completion \
             /opt/local/etc/bash_completion \
             /etc/bash_completion \
             ~/.bash_completion ;
