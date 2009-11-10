@@ -50,16 +50,8 @@ gitalias rv='git remote -v'
 alias wip='git add -u && git commit -m "..."'
 alias wipc='date >> WIP && git add WIP && git commit -m ...'
 
-git-wtf() {
-	local args
-	while [ $# -gt 1 ]
-	do
-		args="$args $1"
-		shift
-	done
-	git log $args HEAD..$1
-}
-alias wtf='git-wtf'
-gitcomplete wtf checkout
-
 gitalias fp='git format-patch --stdout'
+
+# git track completes like checkout
+alias track='git-track'
+gitcomplete track checkout
