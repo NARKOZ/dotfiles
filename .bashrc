@@ -12,9 +12,6 @@
 # CONFIGURATION
 # ----------------------------------------------------------------------
 
-# source /etc/bashrc?
-: ${NO_SYSTEM_RC=}
-
 # complete hostnames from
 : ${HOSTFILE=~/.ssh/known_hosts}
 
@@ -26,13 +23,14 @@
 #  SHELL OPTIONS
 # ----------------------------------------------------------------------
 
-# bring in global/system bashrc
-test -z "$NO_SYSTEM_RC" -a -r /etc/bashrc &&
-. /etc/bashrc
+# bring in system bashrc
+test -r /etc/bashrc &&
+      . /etc/bashrc
 
-# notify bg job completion immediately
+# notify of bg job completion immediately
 set -o notify
 
+# shell opts. see bash(1) for details
 shopt -s cdspell >/dev/null 2>&1
 shopt -s extglob >/dev/null 2>&1
 shopt -s histappend >/dev/null 2>&1
@@ -41,9 +39,10 @@ shopt -s interactive_comments >/dev/null 2>&1
 shopt -u mailwarn >/dev/null 2>&1
 shopt -s no_empty_cmd_completion >/dev/null 2>&1
 
+# fuck that you have new mail shit
 unset MAILCHECK
 
-# no core dumps
+# disable core dumps
 ulimit -S -c 0
 
 # default umask
@@ -84,11 +83,11 @@ esac
 : ${LC_ALL:="en_US.UTF-8"}
 export LANG LANGUAGE LC_CTYPE LC_ALL
 
-# Always use PASSIVE mode ftp
+# always use PASSIVE mode ftp
 : ${FTP_PASSIVE:=1}
 export FTP_PASSIVE
 
-# Ignore backups, CVS directories, python bytecode, vim swap files
+# ignore backups, CVS directories, python bytecode, vim swap files
 FIGNORE="~:CVS:#:.pyc:.swp:.swa:apache-solr-*"
 HISTCONTROL=ignoreboth
 
@@ -155,7 +154,7 @@ prompt_color() {
 }
 
 # ----------------------------------------------------------------------
-# MacOS X / Darwin
+# MACOS X / DARWIN SPECIFIC
 # ----------------------------------------------------------------------
 
 if [ "$UNAME" = Darwin ]; then
@@ -169,6 +168,11 @@ if [ "$UNAME" = Darwin ]; then
 
         # nice little port alias
         alias port="sudo nice -n +18 $PORTS/bin/port"
+    }
+
+    test -x /usr/pkg && {
+        PATH="/usr/pkg/sbin:/usr/pkg/bin:$PATH"
+        MANPATH="/usr/pkg/share/man:$MANPATH"
     }
 
     # setup java environment. puke.
@@ -189,7 +193,7 @@ fi
 # disk usage with human sizes and minimal depth
 alias du1='du -h --max-depth=1'
 alias fn='find . -name'
-alias hi="history | tail -20"
+alias hi='history | tail -20'
 
 # ----------------------------------------------------------------------
 # BASH COMPLETION
@@ -205,10 +209,10 @@ if test -z "$BASH_COMPLETION" ; then
             /etc/bash_completion \
             ~/.bash_completion ;
         do
-            if test -f $f; then
+            test -f $f && {
                 . $f
                 break
-            fi
+            }
         done
     fi
     unset bash bmajor bminor
@@ -220,68 +224,30 @@ _expand() {
 }
 
 # ----------------------------------------------------------------------
-# COLOR UTILS
+# LS AND DIRCOLORS
 # ----------------------------------------------------------------------
 
+# we always pass these to ls(1)
 LS_COMMON="-hBG"
-if test -n "$dircolors"; then
+
+# if the dircolors utility is available, set that up to
+dircolors="$(type -P gdircolors dircolors | head -1)"
+test -n "$dircolors" && {
     COLORS=/etc/DIR_COLORS
     test -e "/etc/DIR_COLORS.$TERM"   && COLORS="/etc/DIR_COLORS.$TERM"
     test -e "$HOME/.dircolors"        && COLORS="$HOME/.dircolors"
-    test -e "$HOME/.dircolors.$TERM"  && COLORS="$HOME/.dircolors.$TERM"
-    test -e "$HOME/.dir_colors"       && COLORS="$HOME/.dir_colors"
-    test -e "$HOME/.dir_colors.$TERM" && COLORS="$HOME/.dir_colors.$TERM"
     test ! -e "$COLORS"               && COLORS=
     eval `$dircolors --sh $COLORS`
-fi
+}
 unset dircolors
 
-if test -n "$LS_COLORS"; then
-    alias ll="/bin/ls -l $LS_COMMON"
-    alias l.="/bin/ls -d $LS_COMMON .*"
-    alias ls="/bin/ls $LS_COMMON"
-fi
+# setup the main ls alias if we've established common args
+test -n "$LS_COMMON" &&
+alias ls="command ls $LS_COMMON"
 
-# gnu() {
-#     basename $(type -P "$@" false | head -1)
-# }
-
-# prefer GNU version of most core utilities from the shell.
-# alias awk=$(gnu gawk gnuawk awk)
-# alias base64=$(gnu gbase64 base64)
-# alias basename=$(gnu gbasename basename false)
-# alias cat=$(gnu gcat cat false)
-# alias cp=$(gnu gcp cp false)
-# alias cut=$(gnu gcut cut false)
-# alias date=$(gnu gdate date)
-# alias df=$(gnu gdf df)
-# alias du=$(gnu gdu du)
-# alias head=$(gnu ghead head)
-# alias join=$(gnu gjoin join)
-# alias md5sum=$(gnu gmd5sum md5sum)
-# alias mv=$(gnu gmv mv)
-# alias nl=$(gnu gnl nl)
-# alias paste=$(gnu gpaste paste)
-# alias printf=$(gnu gprintf printf)
-# alias readlink=$(gnu greadlink readlink)
-# alias rm=$(gnu grm rm)
-# alias seq=$(gnu gseq seq)
-# alias sha1sum=$(gnu gsha1sum sha1sum)
-# alias sleep=$(gnu gsleep sleep)
-# alias sort=$(gnu gsort sort)
-# alias split=$(gnu gsplit split)
-# alias tac=$(gnu gtac tac)
-# alias tail=$(gnu gtail tail)
-# alias tar=$(gnu gnutar gtar tar)
-# alias tee=$(gnu gtee tee)
-# alias touch=$(gnu gtouch touch)
-# alias tr=$(gnu gtr tr)
-# alias uniq=$(gnu guniq uniq)
-# alias uptime=$(gnu guptime uptime)
-# alias wc=$(gnu gwc wc)
-# alias who=$(gnu gwho who)
-# alias whoami=$(gnu gwhoami whoami)
-
+# these use the ls aliases above
+alias ll="ls -l"
+alias l.="ls -d .*"
 
 # --------------------------------------------------------------------
 # MISC COMMANDS
@@ -302,10 +268,11 @@ push_ssh_cert() {
 # USER SHELL ENVIRONMENT
 # -------------------------------------------------------------------
 
+# source ~/.shenv now if it exists
 test -r ~/.shenv &&
 . ~/.shenv
 
-# Use the color prompt by default
+# Use the color prompt by default when interactive
 test -n "$PS1" &&
 prompt_color
 
