@@ -28,8 +28,8 @@ gitalias r='git rebase --interactive HEAD~10'
 gitalias d='git diff'
 gitalias p='git diff --cached'   # mnemonic: "patch"
 
-# git status
-alias  s='git status'
+# git status (with pagination)
+alias  s='git -p status'
 
 # git log
 gitalias  L='git log'
