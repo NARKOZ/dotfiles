@@ -178,7 +178,7 @@ if [ "$UNAME" = Darwin ]; then
     # setup java environment. puke.
     JAVA_HOME="/System/Library/Frameworks/JavaVM.framework/Home"
     ANT_HOME="/Developer/Java/Ant"
-    export ANT_HOME JRUBY_HOME
+    export ANT_HOME JAVA_HOME
 
     # hold jruby's hand
     test -d /opt/jruby &&
