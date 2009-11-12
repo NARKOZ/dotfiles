@@ -27,6 +27,7 @@ gitalias r='git rebase --interactive HEAD~10'
 # git diff
 gitalias d='git diff'
 gitalias p='git diff --cached'   # mnemonic: "patch"
+gitalias ds='git diff --stat'    # mnemonic: "diff stat"
 
 # git status (with pagination)
 alias  s='git -p status'
