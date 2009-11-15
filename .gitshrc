@@ -47,11 +47,21 @@ gitalias unstage='git reset HEAD'
 gitalias pop='git reset --soft HEAD^'
 gitalias review='git log -p --max-count=1'
 gitalias grab='git grab'
-gitalias rv='git remote -v'
+
 alias wip='git add -u && git commit -m "..."'
 alias wipc='date >> WIP && git add WIP && git commit -m ...'
 
 gitalias fp='git format-patch --stdout'
+
+# list remotes with repo URLs
+rv () {
+    local line
+    git remote -v | grep push | sed 's/(.*$//' |
+    while read line;
+    do
+        printf "%-15s %s\n" $line
+    done
+}
 
 # git track completes like checkout
 alias track='git-track'
