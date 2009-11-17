@@ -1,0 +1,23 @@
+#!/bin/sh
+# Usage: chromium [<options>]
+# Starts Chromium.app with the --enable-user-scripts option
+# and writes debugging information to standard output. If
+# the dtach program is available, the session can be sent
+# to the background and resumed on subsequent runs.
+
+# set this in your profile if it's different.
+: ${CHROMIUM:="/Applications/Chromium.app"}
+
+COMMAND="$CHROMIUM/Contents/MacOS/Chromium"
+OPTIONS="--enable-user-scripts"
+
+# use dtach to ensure we only run this once
+type dtach 1>/dev/null 2>&1 && {
+    echo "[attaching]     hit C-\\ to detach"
+    sleep 2
+    exec dtach -A /tmp/D-chromium.sock "$COMMAND" $OPTIONS "$@"
+}
+
+# otherwise, just run it foregrounded in the
+# console
+exec "$COMMAND" $OPTIONS "$@"
