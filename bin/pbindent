@@ -1,0 +1,5 @@
+#!/bin/sh
+# Usage: pbindent
+# Indent pboard text four spaces.
+
+pbpaste | sed 's/^/    /' | pbcopy
