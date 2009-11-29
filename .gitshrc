@@ -66,3 +66,7 @@ rv () {
 # git track completes like checkout
 alias track='git-track'
 gitcomplete track checkout
+
+# setup completion for non git core tools
+gitcomplete gitx checkout
+gitcomplete tig checkout
