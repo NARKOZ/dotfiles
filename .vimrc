@@ -237,6 +237,7 @@ map ,s :call StripWhitespace ()<CR>
 au BufRead,BufNewFile *.rpdf       set ft=ruby
 au BufRead,BufNewFile *.rxls       set ft=ruby
 au BufRead,BufNewFile *.ru         set ft=ruby
+au BufRead,BufNewFile *.god        set ft=ruby
 au BufRead,BufNewFile *.rtxt       set ft=html spell
 au BufRead,BufNewFile *.sql        set ft=pgsql
 au BufRead,BufNewFile *.rl         set ft=ragel
