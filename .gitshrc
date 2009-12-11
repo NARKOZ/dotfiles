@@ -63,6 +63,10 @@ rv () {
     done
 }
 
+# cherry between HEAD and a treeish with sexy colors
+alias cv=git-cv
+gitcomplete cv checkout
+
 # git track completes like checkout
 alias track='git-track'
 gitcomplete track checkout
