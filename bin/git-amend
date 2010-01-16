@@ -4,6 +4,9 @@
 # no changes are currently staged. Modifications not staged are stashed and
 # then reapplied once the amend and rebase operations are complete.
 #
+# This command rewrites history. Do not run it after <commit> or its
+# decendants have been published to the world.
+#
 # This version in POSIX sh by Ryan Tomayko <tomayko.com/about>
 #
 # Based on Mislav's bash version here:
