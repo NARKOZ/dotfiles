@@ -1,12 +1,12 @@
 #!/bin/sh
-#/ Usage: git-track
-#/        git-track <branch>
-#/ Point the current local branch at <branch> for the purpose
-#/ of merge tracking, pull, and status features. With no <branch>,
-#/ write the currently tracked branch to standard output.
-#/
-#/ If you have git's bash-completion support enabled, add this:
-#/ complete -o default -o nospace -F _git_checkout git-track
+## Usage: git track
+##        git track <branch>
+## Point the current local branch at <branch> for the purpose
+## of merge tracking, pull, and status features. With no <branch>,
+## write the currently tracked branch to standard output.
+##
+## If you have git's bash-completion support enabled, add this:
+## complete -o default -o nospace -F _git_checkout git-track
 set -e
 
 # bail out with message to stderr and exit status 1
@@ -18,7 +18,7 @@ die() {
 # deal with argv
 case "$1" in
   --help)
-      grep '^#/' "$0" | cut -c4-
+      grep '^##' "$0" | cut -c4-
       exit
       ;;
   "")
@@ -65,8 +65,7 @@ test -z "$merge" && {
     exit 0
 }
 
-# set the remote if we a full remote/branch ref was
-# given
+# set the remote if a full remote/branch ref was given
 test -n "$remote" &&
 git config "branch.$branch.remote" "$remote"
 
