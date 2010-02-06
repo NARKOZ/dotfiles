@@ -1,18 +1,19 @@
 #!/bin/sh
+# Usage: sync-home [user@]host ...
+# Copy crucial dotfiles and scripts to one or more remote machines.
+#
 # Copyright (c) 2008 Ryan Tomayko <http://tomayko.com/about>
 set -e
 
 test -z "$1" || echo "$@" | grep -q -- '--help' && {
-	echo "usage: $0 [user@]host ..." 1>&2
-	echo "copy dotfiles to remote host" 1>&2
-	exit 1
+    echo "Usage: $0 [user@]host ..."
+    exit 1
 }
 
 cd ~
-for host in "$@"
-do
-  echo "sync: $host"
-  rsync -avz --include-from=- --exclude='*' ./ "${host}:" <<FILES
+for host in "$@"; do
+    echo "sync: $host"
+    rsync -avz --include-from=- --exclude='*' ./ "${host}:" <<FILES
 + /.inputrc
 + /.bashrc
 + /.dircolors
@@ -24,6 +25,7 @@ do
 + /.gitshrc
 + /.gitconfig
 + /.tigrc
++ /.irbrc
 
 + /.vimrc
 + /.gvimrc
@@ -32,12 +34,15 @@ do
 - /.vim/plugin/netrwPlugin.vim
 - /.vim/plugin/ruby_debugger.vim
 - /.vim/swap
+- /.vim/.netrwhist
+- /.vim/tmp
 + /.vim/backup
 - /.vim/backup/**
 + /.vim/**
 
 + /bin
 + /bin/ack
++ /bin/lgrep
 + /bin/git-grab
 + /bin/git-ignore
 + /bin/git-sh
@@ -48,5 +53,4 @@ do
 + /bin/sync-home
 + /bin/tinyurl
 FILES
-
 done
