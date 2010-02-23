@@ -27,7 +27,7 @@ if [ "$current" != "$latest" ]; then
     cd "$tmpdir"
 
     # fetch it
-    curl -O "$build_url/$latest/chrome-mac.zip"
+    curl -# -O "$build_url/$latest/chrome-mac.zip"
 
     printf "\n==> Extracting ...\n" 1>&2
     unzip -q chrome-mac.zip
