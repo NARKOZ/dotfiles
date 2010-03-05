@@ -268,6 +268,22 @@ push_ssh_cert() {
     done
 }
 
+# Usage: uniqpath [<path>]
+# Remove duplicate entries from a PATH style value while retaining
+# the original order. Use $PATH if no <path> is given.
+#
+# Example:
+#   $ uniqpath /usr/bin:/usr/local/bin:/usr/bin
+#   /usr/bin:/usr/local/bin
+uniqpath () {
+    echo "${1:-$PATH}" | tr : '\n' |
+    nl -w 1 |
+    sort -u -k 2,2 | sort -n |
+    cut -f 2- |
+    tr '\n' : |
+    sed -e 's/:$//' -e 's/^://'
+}
+
 # -------------------------------------------------------------------
 # USER SHELL ENVIRONMENT
 # -------------------------------------------------------------------
@@ -275,6 +291,10 @@ push_ssh_cert() {
 # source ~/.shenv now if it exists
 test -r ~/.shenv &&
 . ~/.shenv
+
+# condense PATH entries
+PATH=$(uniqpath $PATH)
+MANPATH=$(uniqpath $MANPATH)
 
 # Use the color prompt by default when interactive
 test -n "$PS1" &&
