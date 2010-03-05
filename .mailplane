@@ -5,7 +5,7 @@ Copyright (C) BEFORE THAT, some other scros on the internet
 */
 
 * {outline: none !important;}
-* {font-family: Lucida Grande, Tahoma, Verdana, Arial, Helvetica, sans-serif !important;}
+* {font-family: 'Lucida Grande', Tahoma, Verdana, Arial, Helvetica, sans-serif !important;}
 .l73JSe { color:#D19800 !important;text-decoration:none !important; }
 .oM { display:none; }
 
@@ -61,3 +61,6 @@ table.iY > tr > td:first-child {
   font-family: Consolas, 'Dejavu Sans', monospace !important;
   font-size:15px !important;
 }
+
+/* vim: ft=css
+*/
