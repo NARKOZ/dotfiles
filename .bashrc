@@ -204,24 +204,23 @@ alias hi='history | tail -20'
 # BASH COMPLETION
 # ----------------------------------------------------------------------
 
-if test -z "$BASH_COMPLETION" ; then
+test -z "$BASH_COMPLETION" && {
     bash=${BASH_VERSION%.*}; bmajor=${bash%.*}; bminor=${bash#*.}
-    if [ "$PS1" ] && [ $bmajor -gt 1 ] ; then
+    test -n "$PS1" && test $bmajor -gt 1 && {
         # search for a bash_completion file to source
-        for f in /usr/pkg/etc/back_completion \
-            /usr/local/etc/bash_completion \
-            /opt/local/etc/bash_completion \
-            /etc/bash_completion \
-            ~/.bash_completion ;
+        for f in /usr/local/etc/bash_completion \
+                 /usr/pkg/etc/bash_completion \
+                 /opt/local/etc/bash_completion \
+                 /etc/bash_completion
         do
             test -f $f && {
                 . $f
                 break
             }
         done
-    fi
+    }
     unset bash bmajor bminor
-fi
+}
 
 # override and disable tilde expansion
 _expand() {
