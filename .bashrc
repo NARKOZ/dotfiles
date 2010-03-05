@@ -271,12 +271,9 @@ push_ssh_cert() {
 #   $ uniqpath /usr/bin:/usr/local/bin:/usr/bin
 #   /usr/bin:/usr/local/bin
 uniqpath () {
-    echo "${1:-$PATH}" | tr : '\n' |
-    nl -w 1 |
-    sort -u -k 2,2 | sort -n |
-    cut -f 2- |
-    tr '\n' : |
-    sed -e 's/:$//' -e 's/^://'
+    echo "${1:-$PATH}" | tr : '\n'            |
+    nl | sort -u -k 2,2 | sort -n | cut -f 2- |
+    tr '\n' : | sed -e 's/:$//' -e 's/^://'
 }
 
 # -------------------------------------------------------------------
