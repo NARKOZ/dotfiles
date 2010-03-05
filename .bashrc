@@ -159,7 +159,7 @@ prompt_color() {
 
 if [ "$UNAME" = Darwin ]; then
     # put ports on the paths if /opt/local exists
-    test -x /opt/local && {
+    test -x /opt/local -a ! -L /opt/local && {
         PORTS=/opt/local
 
         # setup the PATH and MANPATH
@@ -170,7 +170,7 @@ if [ "$UNAME" = Darwin ]; then
         alias port="sudo nice -n +18 $PORTS/bin/port"
     }
 
-    test -x /usr/pkg && {
+    test -x /usr/pkg -a ! -L /usr/pkg && {
         PATH="/usr/pkg/sbin:/usr/pkg/bin:$PATH"
         MANPATH="/usr/pkg/share/man:$MANPATH"
     }
