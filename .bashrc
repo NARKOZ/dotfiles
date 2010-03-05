@@ -3,21 +3,16 @@
 #
 # Ryan Tomayko <http://tomayko.com/about> (with help from the internets).
 
-# setup some basic variables
+# the basics
 : ${HOME=~}
 : ${LOGNAME=$(id -un)}
 : ${UNAME=$(uname)}
 
-# ----------------------------------------------------------------------
-# CONFIGURATION
-# ----------------------------------------------------------------------
-
-# complete hostnames from
+# complete hostnames from this file
 : ${HOSTFILE=~/.ssh/known_hosts}
 
-# readline inputrc
+# readline config
 : ${INPUTRC=~/.inputrc}
-
 
 # ----------------------------------------------------------------------
 #  SHELL OPTIONS
