@@ -1,0 +1,6 @@
+# ack config
+
+--pager=less -R
+
+--type-set
+ronn=.ronn,.ron
