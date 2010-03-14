@@ -6,6 +6,7 @@ if filereadable(filename)
     let igstring = ''
     for oline in readfile(filename)
         let line = substitute(oline, '\s|\n|\r', '', "g")
+        let line = substitute(line, '^/', '', '')
         if line =~ '^#' | con | endif
         if line == '' | con  | endif
         if line =~ '^!' | con  | endif
