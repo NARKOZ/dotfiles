@@ -31,8 +31,8 @@ gitalias d='git diff'
 gitalias p='git diff --cached'   # mnemonic: "patch"
 gitalias ds='git diff --stat'    # mnemonic: "diff stat"
 
-# git status (with pagination)
-alias  s='git -p status'
+# git short status (with pagination)
+alias  s='git -p commit --dry-run --short'
 
 # git log
 gitalias  L='git log'
