@@ -61,13 +61,13 @@ PATH="$HOME/bin:$PATH"
 
 # detect interactive shell
 case "$-" in
-    *i*) INTERACTIVE=1 ;;
+    *i*) INTERACTIVE=yes ;;
     *)   unset INTERACTIVE ;;
 esac
 
 # detect login shell
 case "$0" in
-    -*) LOGIN=1 ;;
+    -*) LOGIN=yes ;;
     *)  unset LOGIN ;;
 esac
 
@@ -312,6 +312,12 @@ ppush () { eval "${2:-PATH}='$(eval echo \$${2:-PATH})':$1"; }
 puniq () {
     echo "$1" |tr : '\n' |nl |sort -u -k 2,2 |sort -n |
     cut -f 2- |tr '\n' : |sed -e 's/:$//' -e 's/^://'
+}
+
+# use gem-man(1) if available:
+man () {
+    gem man -s "$@" 2>/dev/null ||
+    command man "$@"
 }
 
 # -------------------------------------------------------------------
