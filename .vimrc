@@ -200,7 +200,6 @@ let g:is_bash = 1
 
 map ,f :tabnew <cfile><CR>
 map ,d :e %:h/<CR>
-map ,t :tabnew %<CR>
 map ,dt :tabnew %:h/<CR>
 
 " I use these commands in my TODO file
