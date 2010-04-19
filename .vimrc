@@ -101,7 +101,7 @@ set tabstop=4
 set expandtab              " expand tabs to spaces
 set nosmarttab             " fuck tabs
 set formatoptions+=n       " support for numbered/bullet lists
-set textwidth=76           " wrap at 76 chars by default
+set textwidth=80           " wrap at 80 chars by default
 set virtualedit=block      " allow virtual edit in visual block ..
 
 " ----------------------------------------------------------------------------
@@ -191,7 +191,7 @@ endif
 "  sh config
 " ---------------------------------------------------------------------------
 
-au Filetype sh,bash set ts=4 sts=4 shiftwidth=4 expandtab
+au Filetype sh,bash set ts=4 sts=4 sw=4 expandtab
 let g:is_bash = 1
 
 " ---------------------------------------------------------------------------
@@ -244,13 +244,12 @@ au BufRead,BufNewFile *.sql        set ft=pgsql
 au BufRead,BufNewFile *.rl         set ft=ragel
 au BufRead,BufNewFile *.svg        set ft=svg
 au BufRead,BufNewFile *.haml       set ft=haml
-au BufRead,BufNewFile *.md         set ft=mkd tw=72 ts=2 sw=2 expandtab
-au BufRead,BufNewFile *.markdown   set ft=mkd tw=72 ts=2 sw=2 expandtab
-au BufRead,BufNewFile *.ron        set ft=mkd tw=65 ts=2 sw=2 expandtab
+au BufRead,BufNewFile *.md         set ft=mkd tw=80 ts=2 sw=2 expandtab
+au BufRead,BufNewFile *.markdown   set ft=mkd tw=80 ts=2 sw=2 expandtab
+au BufRead,BufNewFile *.ronn       set ft=mkd tw=80 ts=2 sw=2 expandtab
 
-au Filetype gitcommit set tw=68 spell
-au Filetype ruby      set textwidth=80 ts=2
-au Filetype haml      set ts=2 sw=2 sts=0 expandtab tw=120
+au Filetype gitcommit set tw=68  spell
+au Filetype ruby      set tw=80  ts=2
 au Filetype html,xml,xsl,rhtml source $HOME/.vim/scripts/closetag.vim
 
 " --------------------------------------------------------------------------
