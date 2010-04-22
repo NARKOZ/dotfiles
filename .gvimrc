@@ -8,8 +8,8 @@ colorscheme vividchalk
 set gfn=DejaVu\ Sans\ Mono:h13
 set anti               " antialiasing
 set guioptions=gemc
-set columns=89
-set lines=55
+set columns=100
+set lines=61
 set ch=4
 
 " puts external commands through a pipe instead of a pseudo-tty:
