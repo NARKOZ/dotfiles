@@ -327,6 +327,9 @@ man () {
 # USER SHELL ENVIRONMENT
 # -------------------------------------------------------------------
 
+# bring in rbdev functions
+. rbdev 2>/dev/null || true
+
 # source ~/.shenv now if it exists
 test -r ~/.shenv &&
 . ~/.shenv
