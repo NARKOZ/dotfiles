@@ -52,5 +52,7 @@ for host in "$@"; do
 + /bin/memcached-tool
 + /bin/sync-home
 + /bin/tinyurl
++ /bin/rbconfig
++ /bin/addr
 FILES
 done
