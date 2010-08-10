@@ -54,5 +54,6 @@ for host in "$@"; do
 + /bin/tinyurl
 + /bin/rbconfig
 + /bin/addr
++ /bin/gendiff
 FILES
 done

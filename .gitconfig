@@ -3,7 +3,9 @@
     email = rtomayko@gmail.com
 
 [alias]
-    hub    = !github
+    browse = !hub browse
+    w      = !hub browse
+    compare = !hub compare
     sh     = !git-sh
     grab   = !git-grab
     thanks = !git-thanks

@@ -9,7 +9,7 @@ set gfn=DejaVu\ Sans\ Mono:h13
 set anti               " antialiasing
 set guioptions=gemc
 set columns=100
-set lines=61
+set lines=65
 set ch=4
 
 " puts external commands through a pipe instead of a pseudo-tty:

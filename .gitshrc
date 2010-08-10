@@ -14,3 +14,5 @@ gitcomplete cv checkout
 gitcomplete track checkout
 gitcomplete gitx checkout
 gitcomplete tig checkout
+gitcomplete browse ls-tree
+gitcomplete w ls-tree

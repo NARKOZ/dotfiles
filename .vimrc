@@ -108,6 +108,9 @@ set virtualedit=block      " allow virtual edit in visual block ..
 "  Mappings
 " ----------------------------------------------------------------------------
 
+" remap <LEADER> to ',' (instead of '\')
+let mapleader = ","
+
 " quickfix mappings
 map <F7>  :cn<CR>
 map <S-F7> :cp<CR>
