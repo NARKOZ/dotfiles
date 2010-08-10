@@ -251,6 +251,8 @@ au Filetype gitcommit set tw=68  spell
 au Filetype ruby      set tw=80  ts=2
 au Filetype html,xml,xsl,rhtml source $HOME/.vim/scripts/closetag.vim
 
+au BufNewFile,BufRead *.mustache        setf mustache
+
 " --------------------------------------------------------------------------
 " ManPageView
 " --------------------------------------------------------------------------
