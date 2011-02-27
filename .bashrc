@@ -84,7 +84,11 @@ export FTP_PASSIVE
 
 # ignore backups, CVS directories, python bytecode, vim swap files
 FIGNORE="~:CVS:#:.pyc:.swp:.swa:apache-solr-*"
+
+# history stuff
 HISTCONTROL=ignoreboth
+HISTFILESIZE=10000
+HISTSIZE=10000
 
 # ----------------------------------------------------------------------
 # PAGER / EDITOR
