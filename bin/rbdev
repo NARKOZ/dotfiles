@@ -1,11 +1,31 @@
 #!/bin/sh
 # Usage: . rbdev
-# Activate a Ruby working directory for all
+#        cd some-great-project
+#        rbdev
 #
-# IMPORTANT
-# This file is meant to be sourced into your shell. Once sourced,
-# the rbdev command is used to manipulate the PATH and RUBYLIB
-# environment variables.
+# Set up the PATH, RUBYLIB, and MANPATH environment for local development
+# against a project adhering to the Ruby Packaging Standard [1].
+#
+# - Adds <project>/lib to RUBYLIB
+# - Maybe adds <project>/ext/* to RUBYLIB (when C extensions are present)
+# - Maybe adds <project>/bin to PATH (when bin scripts are present)
+# - Maybe adds <project>/man to MANPATH (when man pages are present)
+#
+# Place this file somewhere on your PATH (e.g., ~/bin) and source it into
+# your shell by adding a line like the following to your ~/.bashrc:
+#
+#   . ~/bin/rbdev 2>/dev/null || true
+#
+# Next, use the rbdev function to setup your environment:
+#
+#   $ cd ~/develop/your-great-ruby-project
+#   $ rbdev
+#
+# Once the environment is setup, you should be able to run the project's bin
+# scripts and tests without needing to pass explicit path and load path
+# arguments to ruby(1).
+#
+# [1]: http://chneukirchen.github.com/rps/
 
 test "$(basename $0)" = rbdev && {
     echo 1>&2 "This program cannot be run directly; it must first be sourced"
