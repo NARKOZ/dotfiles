@@ -16,3 +16,8 @@ gitcomplete gitx checkout
 gitcomplete tig checkout
 gitcomplete browse ls-tree
 gitcomplete w ls-tree
+
+gitcomplete incoming checkout
+gitcomplete in       checkout
+gitcomplete outgoing checkout
+gitcomplete out      checkout

@@ -46,6 +46,8 @@ for host in "$@"; do
 + /bin/git-grab
 + /bin/git-ignore
 + /bin/git-sh
++ /bin/git-incoming
++ /bin/git-outgoing
 + /bin/gzball
 + /bin/headers
 + /bin/markdown
