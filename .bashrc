@@ -112,6 +112,7 @@ export PAGER MANPAGER
 
 # Ack
 ACK_PAGER="$PAGER"
+ACK_PAGER_COLOR="$PAGER"
 
 # ----------------------------------------------------------------------
 # PROMPT
