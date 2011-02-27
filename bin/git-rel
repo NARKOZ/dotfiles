@@ -32,9 +32,12 @@ ref="${1:-$(tracking_branch)}"
 
 git rev-list --left-right --abbrev-commit --abbrev $ref...HEAD |
 cut -c1         |
-sed '
+sort            |
+uniq -c         |
+tr '\n' ','     |
+sed "
   s/>/ahead/
   s/</behind/
-'               |
-sort            |
-uniq -c
+  s/,$//g
+  s/,/, /g
+"
