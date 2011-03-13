@@ -32,6 +32,9 @@
     logallrefupdates = true
     whitespace = space-before-tab, trailing-space
 
+[help]
+    browser = open
+
 [branch]
     autosetupmerge = true
 
@@ -39,8 +42,8 @@
     renames = copies
     mnemonicprefix = true
 
-[help]
-    browser = open
+[push]
+    default = current
 
 [sendemail]
     smtpserver = smtp.gmail.com
