@@ -71,4 +71,7 @@
 	changed = green bold
 	untracked = blue bold
 
+[hub]
+	http-clone = true
+
 # vim: noexpandtab
