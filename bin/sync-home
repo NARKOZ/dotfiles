@@ -43,6 +43,8 @@ for host in "$@"; do
 + /bin
 + /bin/ack
 + /bin/lgrep
++ /bin/git-cut-branch
++ /bin/git-find-object
 + /bin/git-grab
 + /bin/git-ignore
 + /bin/git-sh
@@ -55,6 +57,7 @@ for host in "$@"; do
 + /bin/sync-home
 + /bin/tinyurl
 + /bin/rbconfig
++ /bin/rbdev
 + /bin/addr
 + /bin/gendiff
 FILES
