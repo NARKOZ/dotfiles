@@ -43,10 +43,14 @@ for host in "$@"; do
 + /bin
 + /bin/ack
 + /bin/lgrep
++ /bin/git-big-object-report
 + /bin/git-cut-branch
 + /bin/git-find-object
 + /bin/git-grab
++ /bin/git-ls-object-refs
 + /bin/git-ignore
++ /bin/git-object-deflate
++ /bin/git-push-log
 + /bin/git-sh
 + /bin/git-incoming
 + /bin/git-outgoing
