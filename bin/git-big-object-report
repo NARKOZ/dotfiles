@@ -10,9 +10,11 @@ set -e
 # iterate easily over the verify-pack output
 IFS=$'\n';
 
+git_dir=$(git rev-parse --git-dir)
+
 # list all objects including their size, sort by size, take top 10
 objects=$(
-    git verify-pack -v .git/objects/pack/pack-*.idx |
+    git verify-pack -v "$git_dir"/objects/pack/pack-*.idx |
     grep -v chain |
     sort -k3nr    |
     head
