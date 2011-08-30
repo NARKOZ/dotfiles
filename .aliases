@@ -1,0 +1,123 @@
+# Filename       : ~/.aliases
+# Purpose        : aliases file for the shell (zsh, bash..)
+# Author         : Nihad Abbasov <mail@narkoz.me>
+# Homepage       : http://narkoz.me
+# Latest release : <https://github.com/narkoz/dotfiles/>
+# README         : <https://wiki.github.com/narkoz/dotfiles/>
+
+# ----------------------------------------------------------------------
+# ALIASES
+# ----------------------------------------------------------------------
+
+# Quick edit often used setup file
+alias Eb='$EDITOR ~/.bashrc'
+alias Ez='$EDITOR ~/.zshrc'
+alias Ev='$EDITOR ~/.vimrc'
+alias Esc='$EDITOR ~/.screenrc'
+
+# Disable "spell-correction" for these commands
+alias mv="nocorrect mv"
+alias cp="nocorrect cp"
+alias man="nocorrect man"
+alias mkdir="nocorrect mkdir"
+alias mcd="nocorrect mcd"
+alias rm="nocorrect rm"
+alias forever="nocorrect forever"
+
+# SSH to some hosts
+alias router="telnet 192.168.1.1"
+alias ne-comp="ssh root@192.168.1.34"
+
+# Quick chmod
+alias rw-='chmod 600'
+alias rwx='chmod 700'
+alias r--='chmod 644'
+alias r-x='chmod 755'
+
+# Shut up ;)
+setopt nobeep
+
+# General
+alias l.='ls -d .[^.]*'
+alias lsld='ls -ld *(-/DN)'
+alias md='mkdir -p'
+alias rd='rmdir'
+alias ls='ls -FG'
+alias ctar='tar -cvzf'
+alias xtar='tar -xvzf'
+alias fn='find . -name'
+alias system='uname -sr'
+alias lo='logout'
+alias X='exit'
+alias tsl='tail -f /var/log/syslog.log'
+
+# convert from UPPER to lower (or back)
+alias UP2low='for i in *(.); mv $i ${i:l}'
+alias low2UP='for i in *(.); mv $i ${i:u}'
+
+# disk usage with human sizes and minimal depth
+alias du1='du -h --max-depth=1'
+
+# get top 10 shell commands
+alias top10='print -l ${(o)history%% *} | uniq -c | sort -nr | head -n 10'
+
+# history mechanism
+alias h='history'
+alias hi='history | tail -20'
+
+# ip related stuff
+alias ip='curl -s icanhazip.com'
+alias ipl="ifconfig | grep 'inet ' | grep -v 127.0.0.1 | cut -d\   -f2"
+alias ips='ifconfig en1 | grep -w inet'
+
+# git
+alias glpret='git log --pretty=format:"%n%ad : %an%n%s%n=====================================%n%b%n"'
+alias glsy='glpret --since=yesterday'
+alias gls2d='glpret --since="2 days ago" --until="1 day ago"'
+
+# other
+alias irbn='pry'
+alias gi='gem install'
+alias optall='optipng -o7 *.png' # optimize png images
+alias rake_clean="rake whitespace:cleanup; rake whitespace:retab; rake whitespace:scrub_gratuitous_newlines"
+
+# eheheh :>
+alias bitch='sudo'
+alias autofuck='cat /dev/urandom | hexdump -C | grep "ca fe"'
+
+# start zsh/vim/screen without any setup
+alias null-zsh='zsh -f'
+alias null-vim='vim -u NONE'
+alias null-screen="screen -c /dev/null"
+
+# Edit my sig
+alias esig="$EDITOR ~/.sig"
+
+# Make a certificate
+alias cert="openssl req -new -x509 -nodes -out cert.pem -keyout cert.key -days 365"
+
+# Make/Create/Convert Pics/Thumbnails
+alias _GIF='convert -verbose -interlace LINE'
+alias _thumb='convert -geometry 100x100 -interlace LINE -verbose'
+alias _thumb150='convert -geometry 150x150 -interlace LINE -verbose'
+alias _thumb200='convert -geometry 200x200 -interlace LINE -verbose'
+
+# *Very* often used!
+alias lad='ls -d -- .*(/)'	    # only show dot-directories
+alias lsa='ls -a -- .*(.)'	    # only show dot-files
+alias lsd='ls -d -- *(/)'		    # only show directories
+alias lse='ls -ld -- *(/^F)'    # only show empty directories
+alias lsen='ls -d *(/om[1])'    # newest directory
+alias lsnew='=ls -rtlh -- *(.) | tail $@ 2&>/dev/null'  # only the newest files
+alias lsold="=ls -rtl -- *(.) | head $@ 2&>/dev/null"   # display the oldest files
+alias lssmall="=ls -Sl -- *(.) | tail $@ 2&>/dev/null"  # display the smallest files
+alias lsx='ls -l -- *(*) | head $@ 2&>/dev/null'        # only show executables
+alias lssuid='ls -l -- *(s,S) | head $@ 2&>/dev/null'   # only show suid-files
+alias lsbig="ls -lSh -- *(.) | grep -v total | head $@ 2&>/dev/null"    # display the biggest files
+
+# show sorted directory sizes for all directories
+alias dua='du -s *(/DN) | sort -nr | cut -f 2- | while read a; do du -sh "$a"; done'
+# show sorted directory sizes for visible directories only
+alias duv='du -s *(/N) | sort -nr | cut -f 2- | while read a; do du -sh "$a"; done'
+# show sorted directory sizes for hidden directories only
+alias duh='du -s .*(/N) | sort -nr | cut -f 2- | while read a; do du -sh "$a"; done'
