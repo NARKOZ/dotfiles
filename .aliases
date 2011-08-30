@@ -121,3 +121,31 @@ alias dua='du -s *(/DN) | sort -nr | cut -f 2- | while read a; do du -sh "$a"; d
 alias duv='du -s *(/N) | sort -nr | cut -f 2- | while read a; do du -sh "$a"; done'
 # show sorted directory sizes for hidden directories only
 alias duh='du -s .*(/N) | sort -nr | cut -f 2- | while read a; do du -sh "$a"; done'
+
+# ----------------------------------------------------------------------
+# MACOS X / DARWIN SPECIFIC
+# ----------------------------------------------------------------------
+
+if [ "$(uname)" = Darwin ]; then
+  # textmate
+  alias et='mate .'
+  alias gdiff-mate='git diff | mate'
+  function tm() {
+    cd $1
+    mate .
+  }
+
+  # say hi to github
+  alias gh='open https://github.com'
+
+  # postgresql
+  alias pgstart='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
+  alias pgstop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
+
+  # take quick screenshots
+  alias scrot='screencapture -iW ~/screenshot_`date "+%Y-%m-%d"`.png'
+
+  # etc, etc, etc
+  alias eject='diskutil eject'
+  alias relax='/usr/local/bin/growlnotify "Relax" -m "Don''t Fuck Up Again"'
+fi
