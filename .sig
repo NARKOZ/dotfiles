@@ -1,2 +1,2 @@
 --
-# tomayko.com/about
+# narkoz.me/about
