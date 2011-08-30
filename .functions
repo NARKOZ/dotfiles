@@ -1,0 +1,126 @@
+# Filename       : ~/.functions
+# Purpose        : functions file for the shell (zsh, bash..)
+# Author         : Nihad Abbasov <mail@narkoz.me>
+# Homepage       : http://narkoz.me
+# Latest release : <https://github.com/narkoz/dotfiles/>
+# README         : <https://wiki.github.com/narkoz/dotfiles/>
+
+# ----------------------------------------------------------------------
+# FUNCTIONS
+# ----------------------------------------------------------------------
+
+# create a directory like "year-month-day" (i.e. 2008-08-31)
+function mdate()
+{
+	mkdir `date +%F`
+	cd `date +%F`
+}
+
+# colorize the output of cal
+function calendar() {
+	if [[ ! -f /usr/bin/cal ]] ; then
+		echo "Please install cal before trying to use it!"
+		return
+	fi
+	if [[ "$#" = "0" ]] ; then
+		/usr/bin/cal | egrep -C 40 --color "\<$(date +%e| tr -d ' ')\>"
+	else
+		/usr/bin/cal $@ | egrep -C 40 --color "\<($(date +%B)|$(date +%e | tr -d ' '))\>"
+	fi
+}
+
+# display current directory as a 'tree'.
+if [ ! -x  $(which tree > /dev/null 2>&1) ]; then
+	function tree() { find . | sed -e 's/[^\/]*\//|----/g' -e 's/---- |/    |/g' | $PAGER }
+fi
+
+# rfc2396 url encoding (by Bart Schaefer)
+function urlencode() {
+	setopt localoptions extendedglob
+	input=( ${(s::)1} )
+	print ${(j::)input/(#b)([^A-Za-z0-9_.--version\'\(\)-])/%$(([##16]#match))}
+}
+
+# convert IPv6 to IPv4 - adresses.. maybe..
+function 6to4() {
+	ipv4=`dig $1|grep -v '^;'|sed -e '/^$/d'|cut -f 6`
+	echo; echo "ipv4 addr ==  $ipv4"
+	printf "2002:%02x%02x:%02x%02x::1" `echo $ipv4 | tr "." " "`;echo
+}
+
+# making the right decisions is hard :>
+function helpme()
+{
+	print "Please wait.. i'll think about.."
+	for i in 1 2 3; do echo -ne "."; sleep 0.3; done
+	if [ $RANDOM -gt $RANDOM ]
+	then
+		print "Yes\!"
+	else
+		print "No\!"
+	fi
+}
+
+# /gitize/ $PWD
+function gitize() { git init && git add . && git commit -a -m "initial commit" && ggpush }
+
+# display a list of possible passwords
+function makepasswords()
+{
+	perl <<EOPERL
+	my @a = ("a".."z","A".."Z","0".."9",(split //, q{#@,.<>$%&()*^}));
+	for (1..10) {
+		print join "", map { \$a[rand @a] } (1..rand(3)+7);
+		print qq{\n}
+	}
+EOPERL
+}
+
+# cd && ls
+function cl() { cd $1 && ls -a }
+
+# add a "load-level"
+function load()
+{
+	LOAD=`print ${${$(=uptime)[11]}:gs/,//}`
+	case $LOAD {
+	    0.0*)     llevel="relax.."   ;;
+	    0.[123]*) llevel="normal."   ;;
+	    0.[456]*) llevel="verspannt"   ;;
+	    0.[789]*) llevel="WTF?!"  ;;
+	    1*)       llevel="dangerous!" ;;
+	    2*)       llevel="HELP ME!!!111!"   ;;
+	    [3-9]*)   llevel="He's dead jim!"   ;;
+	    *)        return         ;;
+	}
+	echo "$llevel"
+}
+
+# display some information
+function status()
+{
+  print ""
+  print "Date..: "$(date "+%Y-%m-%d %H:%M:%S")""
+  print "Shell.: Zsh $ZSH_VERSION (PID = $$, $SHLVL nests)"
+  print "Term..: $TTY ($TERM), $COLUMNS x $LINES cars"
+  print "Login.: $LOGNAME (UID = $EUID) on $HOST"
+  print "System: $(system)"
+  print "Uptime: $(print ${${$(=uptime)[3,5]}:gs/,//})"
+  print "Load..: "$(load)""
+  print ""
+}
+
+# generate thumbnails page ;)
+function genthumbs()
+{
+	echo "
+	<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+	<html><head><title>Images from $PWD</title></head>
+	<body>" > index.html
+	for f in (#i)*.(gif|jpeg|jpg|png)
+	do
+		convert -size 100x200 "$f" -resize 100x200 thumb-"$f"
+		echo "    <a href=\"$f\"><img src=\"thumb-$f\"></a>" >> index.html
+	done
+	echo "</body></html>" >> index.html
+}
