@@ -28,3 +28,13 @@ plugins=(git brew bundler gem osx rails3 rvm)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
+. ~/.aliases
+. ~/.functions
+
+export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin:/usr/X11/bin:$HOME/bin
+
+# Setup Amazon EC2 Command-Line Tools
+export EC2_HOME=~/.ec2
+export PATH=$PATH:$EC2_HOME/bin
+export EC2_PRIVATE_KEY=`ls $EC2_HOME/pk-*.pem`
+export EC2_CERT=`ls $EC2_HOME/cert-*.pem`

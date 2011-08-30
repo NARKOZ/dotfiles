@@ -9,6 +9,9 @@
 # FUNCTIONS
 # ----------------------------------------------------------------------
 
+# This loads RVM into a shell session.
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
 # create a directory like "year-month-day" (i.e. 2008-08-31)
 function mdate()
 {
