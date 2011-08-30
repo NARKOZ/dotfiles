@@ -30,6 +30,7 @@ source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
 . ~/.aliases
 . ~/.functions
+. ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin:/usr/X11/bin:$HOME/bin
 
