@@ -1,7 +1,10 @@
 [user]
-	name = Ryan Tomayko
-	email = rtomayko@gmail.com
+	name = 
+	email = 
 
+[github]
+	user = 
+	token = 
 
 [alias]
 	browse       = !hub browse
@@ -13,6 +16,7 @@
 	thanks       = !git-thanks
 	track        = !git-track
 	ll           = log --pretty=oneline --abbrev-commit --max-count=15
+	llog         = log --date=local
 	wip          = !git add -u && git commit -m ...
 	wipc         = !date >> WIP && git add WIP && git commit -m ...
 	fp           = format-patch --stdout
@@ -26,11 +30,14 @@
 	s            = status -sb -uno --ignore-submodules=untracked
 	st           = status
 	sa           = status -sb --ignore-submodules=untracked
+	whois        = !git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\" -
+	whatis       = show -s --pretty='tformat:%h (%s, %ad)' --date=short
 
 [core]
 	filemode = true
 	logallrefupdates = true
 	whitespace = space-before-tab, trailing-space
+	excludesfile = ~/.global_ignore
 
 [help]
 	browser = open
@@ -44,12 +51,6 @@
 
 [push]
 	default = current
-
-[sendemail]
-	smtpserver = smtp.gmail.com
-	smtpserverport = 587
-	smtpencryption = tls
-	smtpuser = rtomayko@gmail.com
 
 [color]
 	ui = auto
