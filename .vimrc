@@ -31,7 +31,7 @@ if &t_Co > 2 || has("gui_running")
   endif
   syntax on
   set hlsearch
-  colorscheme slate2
+  colorscheme solarized
 endif
 
 " ---------------------------------------------------------------------------

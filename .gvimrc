@@ -3,7 +3,7 @@
 " -----------------------------------------------------------
 "
 winpos 0 0
-colorscheme vividchalk
+colorscheme tomorrow_night_blue
 
 set gfn=DejaVu\ Sans\ Mono:h13
 set anti               " antialiasing
