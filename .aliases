@@ -75,6 +75,10 @@ alias glpret='git log --pretty=format:"%n%ad : %an%n%s%n========================
 alias glsy='glpret --since=yesterday'
 alias gls2d='glpret --since="2 days ago" --until="1 day ago"'
 
+# rvm
+alias ree='rvm use ree'
+alias 192='rvm use 1.9.2'
+
 # other
 alias irbn='pry'
 alias gi='gem install'
