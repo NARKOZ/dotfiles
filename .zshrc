@@ -32,10 +32,14 @@ source $ZSH/oh-my-zsh.sh
 . ~/.functions
 . ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin:/usr/X11/bin:$HOME/bin
+export PATH=$PATH:$HOME/bin
 
-# Setup Amazon EC2 Command-Line Tools
-export EC2_HOME=~/.ec2
-export PATH=$PATH:$EC2_HOME/bin
-export EC2_PRIVATE_KEY=`ls $EC2_HOME/pk-*.pem`
-export EC2_CERT=`ls $EC2_HOME/cert-*.pem`
+# Test and then setup Amazon EC2 command-line tools.
+if [ -d .ec2 ]; then
+        export EC2_HOME=~/.ec2
+        export PATH=$PATH:$EC2_HOME/bin
+        export EC2_PRIVATE_KEY=`ls $EC2_HOME/pk-*.pem`
+        export EC2_CERT=`ls $EC2_HOME/cert-*.pem`
+else
+        print "Note: ~/.ec2 is unavailable."
+fi
