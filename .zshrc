@@ -12,7 +12,7 @@ export ZSH_THEME="cloud"
 # export CASE_SENSITIVE="true"
 
 # Comment this out to disable weekly auto-update checks
-# export DISABLE_AUTO_UPDATE="true"
+export DISABLE_AUTO_UPDATE="true"
 
 # Uncomment following line if you want to disable colors in ls
 # export DISABLE_LS_COLORS="true"
@@ -30,7 +30,7 @@ source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
 . ~/.aliases
 . ~/.functions
-. ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+. ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin:/usr/X11/bin:$HOME/bin
 
