@@ -1,0 +1,23 @@
+#!/usr/bin/env ruby
+# Usage: router-reboot <router password>
+# https://gist.github.com/1041765
+
+require 'net/telnet'
+
+unless password = ARGV[0]
+  abort "Please specify a password (e.g. router-reboot <password>)"
+end
+
+con = Net::Telnet::new("Host" => "192.168.1.1",
+                       "Timeout" => 10,
+                       "Prompt" => /[$%#>] \z/n)
+passwd_prompt = "Password: "
+
+begin
+  con.cmd("String" => password, "Match" => /#{passwd_prompt}/)
+  con.cmd("sys reboot")
+rescue TimeoutError
+  puts "Timed out! Password fail?"
+end
+
+con.close
