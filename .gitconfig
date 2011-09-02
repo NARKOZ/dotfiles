@@ -39,6 +39,9 @@
 	whitespace = space-before-tab, trailing-space
 	excludesfile = ~/.global_ignore
 
+[apply]
+	whitespace = nowarn
+
 [help]
 	browser = open
 

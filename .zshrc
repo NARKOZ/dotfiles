@@ -28,18 +28,30 @@ plugins=(git brew bundler gem osx rails3 rvm)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-. ~/.aliases
-. ~/.functions
 . ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Test and then source alias definitions.
+if [ -f $HOME/.aliases ]; then
+        source ~/.aliases
+else
+        print "Note: $HOME/.aliases is unavailable."
+fi
+
+# Test and then source the functions.
+if [ -f $HOME/.functions ]; then
+        source $HOME/.functions
+else
+        print "Note: $HOME/.functions is unavailable."
+fi
 
 export PATH=$PATH:$HOME/bin
 
 # Test and then setup Amazon EC2 command-line tools.
-if [ -d .ec2 ]; then
-        export EC2_HOME=~/.ec2
+if [ -d $HOME/.ec2 ]; then
+        export EC2_HOME=$HOME/.ec2
         export PATH=$PATH:$EC2_HOME/bin
         export EC2_PRIVATE_KEY=`ls $EC2_HOME/pk-*.pem`
         export EC2_CERT=`ls $EC2_HOME/cert-*.pem`
 else
-        print "Note: ~/.ec2 is unavailable."
+        print "Note: $HOME/.ec2 is unavailable."
 fi

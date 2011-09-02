@@ -48,7 +48,7 @@ alias xtar='tar -xvzf'
 alias fn='find . -name'
 alias system='uname -sr'
 alias lo='logout'
-alias X='exit'
+alias x='exit'
 alias tsl='tail -f /var/log/syslog.log'
 
 # convert from UPPER to lower (or back)
@@ -67,6 +67,7 @@ alias hi='history | tail -20'
 
 # ip related stuff
 alias ip='curl -s icanhazip.com'
+alias ipa="ifconfig | grep 'inet '"
 alias ipl="ifconfig | grep 'inet ' | grep -v 127.0.0.1 | cut -d\   -f2"
 alias ips='ifconfig en1 | grep -w inet'
 
@@ -150,6 +151,7 @@ if [ "$(uname)" = Darwin ]; then
   alias scrot='screencapture -iW ~/screenshot_`date "+%Y-%m-%d"`.png'
 
   # etc, etc, etc
+  alias o='open .'
   alias eject='diskutil eject'
   alias relax='/usr/local/bin/growlnotify "Relax" -m "Don''t Fuck Up Again"'
 fi
