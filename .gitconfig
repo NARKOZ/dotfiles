@@ -17,10 +17,12 @@
 	track        = !git-track
 	ll           = log --pretty=oneline --abbrev-commit --max-count=15
 	llog         = log --date=local
+	lg           = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
 	wip          = !git add -u && git commit -m ...
 	wipc         = !date >> WIP && git add WIP && git commit -m ...
 	fp           = format-patch --stdout
 	ci           = commit
+	co           = checkout
 	x            = checkout HEAD
 	bv           = !git branch --color -v | cut -c1-100
 	incoming     = !git-incoming
