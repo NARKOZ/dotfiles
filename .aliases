@@ -75,10 +75,12 @@ alias ips='ifconfig en1 | grep -w inet'
 alias glpret='git log --pretty=format:"%n%ad : %an%n%s%n=====================================%n%b%n"'
 alias glsy='glpret --since=yesterday'
 alias gls2d='glpret --since="2 days ago" --until="1 day ago"'
+alias gitlg="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
 
 # rvm
 alias ree='rvm use ree'
 alias 192='rvm use 1.9.2'
+alias 193='rvm use 1.9.3'
 
 # other
 alias irbn='pry'
@@ -88,6 +90,7 @@ alias rake_clean="rake whitespace:cleanup; rake whitespace:retab; rake whitespac
 
 # eheheh :>
 alias bitch='sudo'
+alias please='sudo'
 alias autofuck='cat /dev/urandom | hexdump -C | grep "ca fe"'
 
 # start zsh/vim/screen without any setup

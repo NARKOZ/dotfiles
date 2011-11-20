@@ -17,7 +17,6 @@
 	track        = !git-track
 	ll           = log --pretty=oneline --abbrev-commit --max-count=15
 	llog         = log --date=local
-	lg           = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
 	wip          = !git add -u && git commit -m ...
 	wipc         = !date >> WIP && git add WIP && git commit -m ...
 	fp           = format-patch --stdout
@@ -32,8 +31,6 @@
 	s            = status -sb -uno --ignore-submodules=untracked
 	st           = status
 	sa           = status -sb --ignore-submodules=untracked
-	whois        = !git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\" -
-	whatis       = show -s --pretty='tformat:%h (%s, %ad)' --date=short
 
 [core]
 	filemode = true
