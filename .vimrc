@@ -215,8 +215,8 @@ map ,f :tabnew <cfile><CR>
 
 " I use these commands in my TODO file
 map ,a o<ESC>:r!date +'\%A, \%B \%d, \%Y'<CR>:r!date +'\%A, \%B \%d, \%Y' \| sed 's/./-/g'<CR>A<CR><ESC>
-map ,o o[ ] 
-map ,O O[ ] 
+map ,o o[ ]
+map ,O O[ ]
 map ,x :s/^\[ \]/[x]/<CR>
 map ,X :s/^\[x\]/[ ]/<CR>
 
@@ -281,3 +281,23 @@ let g:rails_menu=2
 " make file executable
 command -nargs=* Xe !chmod +x <args>
 command! -nargs=0 Xe !chmod +x %
+
+" --------------------------------------------------------------------------
+" Vundle ~ https://github.com/gmarik/vundle
+" --------------------------------------------------------------------------
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required!
+Bundle 'gmarik/vundle'
+
+" My Bundles here:
+
+Bundle 'Align'
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-surround'
+Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/syntastic'
+Bundle 'kchmck/vim-coffee-script'
