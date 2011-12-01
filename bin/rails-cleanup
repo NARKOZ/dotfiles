@@ -1,0 +1,27 @@
+#!/bin/sh
+# Usage: rails-cleanup
+# Removes a trailing whitespace and consecutive blank lines
+# from Rails project. Requires a BSD sed, not GNU.
+
+function cleanup {
+  echo "removing trailing whitespace";
+  for f in `find . -type f | grep -v .git | grep -v ./vendor | grep -v ./tmp | egrep ".(rb|js|haml|html|css|sass)"`;
+    do sed -i '' 's/ *$//g' "$f"; printf .;
+  done
+  echo "\ndone"
+}
+
+function scrub_gratuitous_newlines {
+  echo "removing consecutive blank lines";
+  for f in `find . -type f | grep -v .git | grep -v ./vendor | grep -v ./tmp | egrep ".(rb|js|haml|html|css|sass)"`;
+    do sed -i '' '/./,/^$/!d' "$f"; printf .;
+  done
+  echo "\ndone"
+}
+
+if [ -e "script/rails" ]; then
+  cleanup; scrub_gratuitous_newlines
+else
+  echo "failed: not in rails root"
+  exit 1
+fi

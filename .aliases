@@ -86,7 +86,6 @@ alias 193='rvm use 1.9.3'
 alias irbn='pry'
 alias gi='gem install'
 alias optall='optipng -o7 *.png' # optimize png images
-alias rake_clean="rake whitespace:cleanup; rake whitespace:retab; rake whitespace:scrub_gratuitous_newlines"
 
 # eheheh :>
 alias bitch='sudo'

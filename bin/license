@@ -1,6 +1,6 @@
 #!/bin/sh
 # Usage: license
-# Prints an BSD license appropriate for totin' around.
+# Prints a BSD license appropriate for totin' around.
 #
 #   $ license > COPYING
 #
