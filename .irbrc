@@ -34,3 +34,8 @@ end
 def IRB.reload
   load __FILE__
 end
+
+# load .railsrc into rails console
+if defined?(Rails) || ENV['RAILS_ENV']
+  load File.join(ENV['HOME'], '.railsrc')
+end
