@@ -20,6 +20,7 @@ for host in "$@"; do
 + /.inputrc
 + /.bashrc
 + /.zshrc
++ /.zshenv
 + /.dircolors
 + /.bash_completion
 + /.bash_completion.d

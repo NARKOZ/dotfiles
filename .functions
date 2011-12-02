@@ -9,8 +9,16 @@
 # FUNCTIONS
 # ----------------------------------------------------------------------
 
-# This loads RVM into a shell session.
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+# push SSH public key to another box
+push_ssh_cert() {
+  local _host
+  test -f ~/.ssh/id_dsa.pub || ssh-keygen -t dsa
+  for _host in "$@";
+  do
+    echo $_host
+    ssh $_host 'cat >> ~/.ssh/authorized_keys' < ~/.ssh/id_dsa.pub
+  done
+}
 
 # create a directory like "year-month-day" (i.e. 2008-08-31)
 function mdate()
