@@ -5,12 +5,15 @@
 winpos 0 0
 colorscheme tomorrow_night_blue
 
-set gfn=DejaVu\ Sans\ Mono:h13
+set gfn=Monaco:h11
 set anti               " antialiasing
 set guioptions=gemc
 set columns=100
 set lines=65
 set ch=4
+
+" highlight current line
+set cul
 
 " puts external commands through a pipe instead of a pseudo-tty:
 " set noguipty

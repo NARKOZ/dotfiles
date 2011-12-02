@@ -220,6 +220,9 @@ map ,O O[ ]
 map ,x :s/^\[ \]/[x]/<CR>
 map ,X :s/^\[x\]/[ ]/<CR>
 
+" nerdtree mappings
+map ,z :NERDTreeToggle<CR>
+
 " ---------------------------------------------------------------------------
 "  Open URL on current line in browser
 " ---------------------------------------------------------------------------
@@ -260,7 +263,7 @@ au BufRead,BufNewFile *.ronn       set ft=mkd tw=80 ts=2 sw=2 expandtab
 
 au Filetype gitcommit set tw=68  spell
 au Filetype ruby      set tw=80  ts=2
-au Filetype html,xml,xsl,rhtml source $HOME/.vim/scripts/closetag.vim
+au Filetype html,xml,xsl,eruby source $HOME/.vim/scripts/closetag.vim
 
 au BufNewFile,BufRead *.mustache        setf mustache
 
