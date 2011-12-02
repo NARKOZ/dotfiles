@@ -142,6 +142,10 @@ if [ "$(uname)" = Darwin ]; then
     mate .
   }
 
+  # macvim
+  alias mvim='macvim'
+  alias em='macvim .'
+
   # say hi to github
   alias gh='open https://github.com'
 

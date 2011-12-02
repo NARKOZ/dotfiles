@@ -2,3 +2,20 @@
 
 --type-set
 ronn=.ronn,.ron
+
+--type-add=ruby=.haml,.rake,.builder
+--type-add=html=.html.erb,.html.haml
+--type-add=css=.sass,.scss,.less
+--type-add=js=.js.erb
+
+--type-set=coffee=.coffee
+--type-set=feature=.feature
+
+--ignore-dir=doc
+--ignore-dir=log
+--ignore-dir=tmp
+--ignore-dir=vendor
+--ignore-dir=coverage
+
+--follow
+--sort-files
