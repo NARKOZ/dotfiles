@@ -143,8 +143,7 @@ if [ "$(uname)" = Darwin ]; then
   }
 
   # macvim
-  alias mvim='macvim'
-  alias em='macvim .'
+  alias em='mvim .'
 
   # say hi to github
   alias gh='open https://github.com'
