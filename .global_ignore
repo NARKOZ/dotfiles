@@ -18,6 +18,8 @@ tmtags
 
 ## Other
 .rvmrc
+.vim/bundle
+.vim/.netrwhist
 
 ## Rails
 

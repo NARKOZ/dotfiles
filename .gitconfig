@@ -31,8 +31,8 @@
 	s            = status -sb -uno --ignore-submodules=untracked
 	st           = status
 	sa           = status -sb --ignore-submodules=untracked
-  fix          = commit --amend
-  ls           = ls-files
+	fix          = commit --amend
+	ls           = ls-files
 
 [core]
 	filemode = true
