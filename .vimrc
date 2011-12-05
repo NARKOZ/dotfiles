@@ -292,6 +292,26 @@ command! -nargs=0 Xe !chmod +x %
 let g:neocomplcache_enable_at_startup = 1
 
 " --------------------------------------------------------------------------
+" smartchar.vim
+" --------------------------------------------------------------------------
+
+inoremap <expr> , smartchr#one_of(', ', ',')
+inoremap <expr> ? smartchr#one_of('?', '? ')
+
+autocmd FileType ruby
+        \ inoremap <buffer> <expr> = smartchr#one_of('=', '=>', '==')
+
+autocmd FileType eruby
+        \ inoremap <buffer> <expr> > smartchr#loop('>', '%>')
+        \| inoremap <buffer> <expr> < smartchr#loop('<', '<%', '<%=')
+
+" --------------------------------------------------------------------------
+"  NERD_commenter.vim
+" --------------------------------------------------------------------------
+
+let g:NERDSpaceDelims = 1
+
+" --------------------------------------------------------------------------
 "  Bundle
 " --------------------------------------------------------------------------
 
@@ -306,3 +326,5 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'Shougo/neocomplcache'
+Bundle 'kana/vim-smartchr'
+Bundle 'scrooloose/nerdcommenter'
