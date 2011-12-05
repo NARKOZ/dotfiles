@@ -20,6 +20,11 @@ push_ssh_cert() {
   done
 }
 
+# open gem page at rubygems
+function gs() {
+  open "https://rubygems.org/gems/$1"
+}
+
 # create a directory like "year-month-day" (i.e. 2008-08-31)
 function mdate()
 {
