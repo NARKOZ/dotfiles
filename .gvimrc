@@ -5,11 +5,11 @@
 winpos 0 0
 colorscheme vividchalk
 
-set gfn=DejaVu\ Sans\ Mono:h13
+set gfn=Menlo:h14
 set anti               " antialiasing
 set guioptions=gemc
 set columns=100
-set lines=65
+set lines=61
 set ch=4
 
 " puts external commands through a pipe instead of a pseudo-tty:
@@ -21,7 +21,7 @@ set clipboard+=unnamed
 " -----------------------------------------------------------
 "  TABS
 " -----------------------------------------------------------
-"
+
 set guitablabel=%N\ %t\ %m
 
 " C-TAB and C-SHIFT-TAB cycle tabs forward and backward
@@ -50,3 +50,5 @@ nmap <d-9> 9gt
 highlight SpecialKey    guifg=#222222 guibg=#000000
 highlight StatusLineNC  guifg=#444444 guibg=#222222
 highlight StatusLine    guifg=#AAAACC guibg=#222222
+
+hi def link coffeeSpecialVar Type

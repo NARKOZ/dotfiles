@@ -213,6 +213,9 @@ map ,dt :tabnew %:h/<CR>
 " open gf under cursor in new tab
 map ,f :tabnew <cfile><CR>
 
+" open tag under cursor in new tab
+map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+
 " I use these commands in my TODO file
 map ,a o<ESC>:r!date +'\%A, \%B \%d, \%Y'<CR>:r!date +'\%A, \%B \%d, \%Y' \| sed 's/./-/g'<CR>A<CR><ESC>
 map ,o o[ ] 
