@@ -1,2 +1,0 @@
---
-# narkoz.me/about

@@ -6,9 +6,6 @@
 # complete hostnames from this file
 : ${HOSTFILE=~/.ssh/known_hosts}
 
-# readline config
-: ${INPUTRC=~/.inputrc}
-
 # ----------------------------------------------------------------------
 # PATH
 # ----------------------------------------------------------------------
@@ -31,10 +28,6 @@ PATH="$HOME/bin:$PATH"
 : ${LC_CTYPE:="en_US.UTF-8"}
 : ${LC_ALL:="en_US.UTF-8"}
 export LANG LANGUAGE LC_CTYPE LC_ALL
-
-# always use PASSIVE mode ftp
-: ${FTP_PASSIVE:=1}
-export FTP_PASSIVE
 
 # ----------------------------------------------------------------------
 # PAGER / EDITOR
@@ -72,26 +65,18 @@ ACK_PAGER_COLOR="$PAGER"
 if [ -f $HOME/.aliases ]; then
     source $HOME/.aliases
 else
-    print "Note: $HOME/.aliases is unavailable."
+    print "NOTE: $HOME/.aliases is unavailable."
 fi
 
 # Test and then source the functions.
 if [ -f $HOME/.functions ]; then
     source $HOME/.functions
 else
-    print "Note: $HOME/.functions is unavailable."
+    print "NOTE: $HOME/.functions is unavailable."
 fi
 
 # This loads RVM into a shell session.
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-
-# Test and then setup Amazon EC2 command-line tools.
-if [ -d $HOME/.ec2 ]; then
-    export EC2_HOME=$HOME/.ec2
-    export PATH=$PATH:$EC2_HOME/bin
-    export EC2_PRIVATE_KEY=`ls $EC2_HOME/pk-*.pem`
-    export EC2_CERT=`ls $EC2_HOME/cert-*.pem`
-fi
 
 # -------------------------------------------------------------------
 # USER SHELL ENVIRONMENT

@@ -1,7 +1,9 @@
 ## OSX
 
 .DS_Store
-Icon?
+.AppleDouble
+.LSOverride
+Icon
 
 # Thumbnails
 ._*
@@ -10,16 +12,8 @@ Icon?
 .Spotlight-V100
 .Trashes
 
-## TextMate
-
-*.tmproj
-*.tmproject
-tmtags
-
 ## Other
-.rvmrc
 .vim/bundle
-.vim/.netrwhist
 
 ## Rails
 
@@ -28,6 +22,7 @@ tmtags
 .sass-cache
 capybara-*.html
 .rspec
+.rvmrc
 /.bundle
 /vendor/bundle
 /log/*
@@ -37,7 +32,6 @@ capybara-*.html
 /coverage/
 /spec/tmp/*
 **.orig
-config/*.yml
 rerun.txt
 pickle-email-*.html
 
@@ -63,9 +57,10 @@ _yardoc
 doc/
 
 ## vim
-.*.sw[a-z]
+.*.s[a-w][a-z]
 *.un~
 Session.vim
+.netrwhist
 
 ## Django
 *.log
@@ -73,14 +68,10 @@ Session.vim
 *.pyc
 local_settings.py
 
-## Kohana
-application/cache/*
-application/logs/*
-
 ## Objective-C
 
 # Xcode
-build/*
+*/build/*
 *.pbxuser
 !default.pbxuser
 *.mode1v3
@@ -89,8 +80,8 @@ build/*
 !default.mode2v3
 *.perspectivev3
 !default.perspectivev3
-*.xcworkspace
-!default.xcworkspace
 xcuserdata
 profile
 *.moved-aside
+DerivedData
+*.hmap

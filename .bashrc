@@ -11,9 +11,6 @@
 # complete hostnames from this file
 : ${HOSTFILE=~/.ssh/known_hosts}
 
-# readline config
-: ${INPUTRC=~/.inputrc}
-
 # ----------------------------------------------------------------------
 #  SHELL OPTIONS
 # ----------------------------------------------------------------------
@@ -77,10 +74,6 @@ esac
 : ${LC_CTYPE:="en_US.UTF-8"}
 : ${LC_ALL:="en_US.UTF-8"}
 export LANG LANGUAGE LC_CTYPE LC_ALL
-
-# always use PASSIVE mode ftp
-: ${FTP_PASSIVE:=1}
-export FTP_PASSIVE
 
 # ignore backups, CVS directories, python bytecode, vim swap files
 FIGNORE="~:CVS:#:.pyc:.swp:.swa:apache-solr-*"
@@ -160,39 +153,6 @@ prompt_color() {
     PS1="${GREY}[${COLOR1}\u${GREY}@${COLOR2}\h${GREY}:${COLOR1}\W${GREY}]${COLOR2}$P${PS_CLEAR} "
     PS2="\[[33;1m\]continue \[[0m[1m\]> "
 }
-
-# ----------------------------------------------------------------------
-# MACOS X / DARWIN SPECIFIC
-# ----------------------------------------------------------------------
-
-if [ "$UNAME" = Darwin ]; then
-    # put ports on the paths if /opt/local exists
-    test -x /opt/local -a ! -L /opt/local && {
-        PORTS=/opt/local
-
-        # setup the PATH and MANPATH
-        PATH="$PORTS/bin:$PORTS/sbin:$PATH"
-        MANPATH="$PORTS/share/man:$MANPATH"
-
-        # nice little port alias
-        alias port="sudo nice -n +18 $PORTS/bin/port"
-    }
-
-    test -x /usr/pkg -a ! -L /usr/pkg && {
-        PATH="/usr/pkg/sbin:/usr/pkg/bin:$PATH"
-        MANPATH="/usr/pkg/share/man:$MANPATH"
-    }
-
-    # setup java environment. puke.
-    JAVA_HOME="/System/Library/Frameworks/JavaVM.framework/Home"
-    ANT_HOME="/Developer/Java/Ant"
-    export ANT_HOME JAVA_HOME
-
-    # hold jruby's hand
-    test -d /opt/jruby &&
-    JRUBY_HOME="/opt/jruby"
-    export JRUBY_HOME
-fi
 
 # ----------------------------------------------------------------------
 # ALIASES / FUNCTIONS
@@ -355,5 +315,3 @@ test -n "$INTERACTIVE" -a -n "$LOGIN" && {
     uname -npsr
     uptime
 }
-
-# vim: ts=4 sts=4 shiftwidth=4 expandtab

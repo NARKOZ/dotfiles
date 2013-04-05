@@ -49,7 +49,6 @@ alias fn='find . -name'
 alias system='uname -sr'
 alias lo='logout'
 alias x='exit'
-alias tsl='tail -f /var/log/syslog.log'
 
 # convert from UPPER to lower (or back)
 alias UP2low='for i in *(.); mv $i ${i:l}'
@@ -68,22 +67,15 @@ alias hi='history | tail -20'
 # ip related stuff
 alias ip='curl -s icanhazip.com'
 alias ipa="ifconfig | grep 'inet '"
-alias ipl="ifconfig | grep 'inet ' | grep -v 127.0.0.1 | cut -d\   -f2"
-alias ips='ifconfig en1 | grep -w inet'
 
 # git
-alias glpret='git log --pretty=format:"%n%ad : %an%n%s%n=====================================%n%b%n"'
-alias glsy='glpret --since=yesterday'
-alias gls2d='glpret --since="2 days ago" --until="1 day ago"'
 alias gitlg="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
 
 # rvm
-alias ree='rvm use ree'
-alias 192='rvm use 1.9.2'
 alias 193='rvm use 1.9.3'
+alias 200='rvm use 2.0.0'
 
 # other
-alias irbn='pry'
 alias gi='gem install'
 alias optall='optipng -o7 *.png' # optimize png images
 
@@ -97,9 +89,6 @@ alias null-zsh='zsh -f'
 alias null-vim='vim -u NONE'
 alias null-screen="screen -c /dev/null"
 
-# Edit my sig
-alias esig="$EDITOR ~/.sig"
-
 # Make a certificate
 alias cert="openssl req -new -x509 -nodes -out cert.pem -keyout cert.key -days 365"
 
@@ -110,17 +99,16 @@ alias _thumb150='convert -geometry 150x150 -interlace LINE -verbose'
 alias _thumb200='convert -geometry 200x200 -interlace LINE -verbose'
 
 # *Very* often used!
-alias lad='ls -d -- .*(/)'	    # only show dot-directories
-alias lsa='ls -a -- .*(.)'	    # only show dot-files
-alias lsd='ls -d -- *(/)'		    # only show directories
-alias lse='ls -ld -- *(/^F)'    # only show empty directories
-alias lsen='ls -d *(/om[1])'    # newest directory
-alias lsnew='=ls -rtlh -- *(.) | tail $@ 2&>/dev/null'  # only the newest files
-alias lsold="=ls -rtl -- *(.) | head $@ 2&>/dev/null"   # display the oldest files
-alias lssmall="=ls -Sl -- *(.) | tail $@ 2&>/dev/null"  # display the smallest files
-alias lsx='ls -l -- *(*) | head $@ 2&>/dev/null'        # only show executables
-alias lssuid='ls -l -- *(s,S) | head $@ 2&>/dev/null'   # only show suid-files
-alias lsbig="ls -lSh -- *(.) | grep -v total | head $@ 2&>/dev/null"    # display the biggest files
+alias lad='ls -d -- .*(/)'   # only show dot-directories
+alias lsa='ls -a -- .*(.)'   # only show dot-files
+alias lsd='ls -d -- *(/)'    # only show directories
+alias lse='ls -ld -- *(/^F)' # only show empty directories
+alias lsen='ls -d *(/om[1])' # newest directory
+alias lsx='ls -l -- *(*) | head $@ 2&>/dev/null'       # only show executables
+alias lsnew='=ls -rtlh -- *(.) | tail $@ 2&>/dev/null' # only the newest files
+alias lsold="=ls -rtl -- *(.) | head $@ 2&>/dev/null"  # display the oldest files
+alias lssmall="=ls -Sl -- *(.) | tail $@ 2&>/dev/null" # display the smallest files
+alias lsbig="ls -lSh -- *(.) | grep -v total | head $@ 2&>/dev/null" # display the biggest files
 
 # show sorted directory sizes for all directories
 alias dua='du -s *(/DN) | sort -nr | cut -f 2- | while read a; do du -sh "$a"; done'
@@ -134,29 +122,8 @@ alias duh='du -s .*(/N) | sort -nr | cut -f 2- | while read a; do du -sh "$a"; d
 # ----------------------------------------------------------------------
 
 if [ "$(uname)" = Darwin ]; then
-  # textmate
-  alias et='mate .'
-  alias gdiff-mate='git diff | mate'
-  function tm() {
-    cd $1
-    mate .
-  }
-
-  # macvim
-  alias em='mvim .'
-
-  # say hi to github
-  alias gh='open https://github.com'
-
-  # postgresql
-  alias pgstart='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
-  alias pgstop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
+  alias o='open .'
 
   # take quick screenshots
   alias scrot='screencapture -iW ~/screenshot_`date "+%Y-%m-%d"`.png'
-
-  # etc, etc, etc
-  alias o='open .'
-  alias eject='diskutil eject'
-  alias relax='/usr/local/bin/growlnotify "Relax" -m "Don''t Fuck Up Again"'
 fi

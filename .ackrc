@@ -1,10 +1,7 @@
 # ack config
 
---type-set
-ronn=.ronn,.ron
-
---type-add=ruby=.haml,.rake,.builder
---type-add=html=.html.erb,.html.haml
+--type-add=ruby=.haml,.slim,.rake,.builder
+--type-add=html=.html.erb,.html.haml,.html.slim
 --type-add=css=.sass,.scss,.less
 --type-add=js=.js.erb
 
