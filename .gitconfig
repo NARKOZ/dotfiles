@@ -37,7 +37,7 @@
     filemode = true
     logallrefupdates = true
     whitespace = space-before-tab, trailing-space
-    excludesfile = ~/.global_ignore
+    excludesfile = ~/.gitignore_global
 
 [apply]
     whitespace = nowarn
