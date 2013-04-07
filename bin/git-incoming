@@ -1,5 +1,5 @@
 #!/bin/sh
-# Usage: git-incoming [--diff] [<upstream>] [<head> [<limit>]]
+# Usage: git-incoming [d] [<upstream>] [<head> [<limit>]]
 # Show commits on <upstream> that do not exist on current branch.
 
 # bail out with message to stderr and exit status 1

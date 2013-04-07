@@ -1,5 +1,5 @@
 #!/bin/sh
-# Usage: git-outgoing [<upstream>] [<head> [<limit>]]
+# Usage: git-outgoing [-d] [<upstream>] [<head> [<limit>]]
 # Show commits on current branch that do not exist on branch <upstream>.
 
 # bail out with message to stderr and exit status 1
@@ -13,6 +13,13 @@ SHA=$(git config --get-color 'color.branch.local')
 ADD=$(git config --get-color 'color.diff.new')
 REM=$(git config --get-color 'color.diff.old')
 RESET=$(git config --get-color '' 'reset')
+
+# check for -d / --diff argument
+diff=false
+if [ "$1" = '-d' -o "$1" = '--diff' ]
+then diff=true
+     shift
+fi
 
 # get the current branch in refs/heads/<branch> form
 ref=$(git symbolic-ref -q HEAD)
@@ -35,7 +42,10 @@ then
     set -- "$remote/$(echo "$merge" |sed 's@^refs/heads/@@')"
 fi
 
-git cherry -v "$@"                                |
-cut -c1-9 -c43-                                   |
-sed -e "s/^\(.\) \(.......\)/\1 $SHA\2$RESET/"    |
-sed -e "s/^-/$REM-$RESET/" -e "s/^+/$ADD+$RESET/"
+if $diff
+then git diff "$1"...HEAD
+else git cherry -v "$@"                                |
+     cut -c1-9 -c43-                                   |
+     sed -e "s/^\(.\) \(.......\)/\1 $SHA\2$RESET/"    |
+     sed -e "s/^-/$REM-$RESET/" -e "s/^+/$ADD+$RESET/"
+fi
