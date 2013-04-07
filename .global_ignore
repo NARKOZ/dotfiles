@@ -12,9 +12,6 @@ Icon
 .Spotlight-V100
 .Trashes
 
-## Other
-.vim/bundle
-
 ## Rails
 
 *.rbc
