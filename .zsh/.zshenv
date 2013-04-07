@@ -62,17 +62,17 @@ ACK_PAGER_COLOR="$PAGER"
 # ----------------------------------------------------------------------
 
 # Test and then source alias definitions.
-if [ -f $HOME/.aliases ]; then
-    source $HOME/.aliases
+if [ -f $HOME/.zsh/.aliases ]; then
+    source $HOME/.zsh/.aliases
 else
-    print "NOTE: $HOME/.aliases is unavailable."
+    print "NOTE: $HOME/.zsh/.aliases is unavailable."
 fi
 
 # Test and then source the functions.
-if [ -f $HOME/.functions ]; then
-    source $HOME/.functions
+if [ -f $HOME/.zsh/.functions ]; then
+    source $HOME/.zsh/.functions
 else
-    print "NOTE: $HOME/.functions is unavailable."
+    print "NOTE: $HOME/.zsh/.functions is unavailable."
 fi
 
 # This loads RVM into a shell session.

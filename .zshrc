@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
+ZSH=$HOME/.zsh/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -30,8 +30,8 @@ plugins=(git brew bundler gem heroku osx powder rails3 rvm)
 
 source $ZSH/oh-my-zsh.sh
 
-# Customize to your needs...
-. ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# Enable syntax highlighting for Zsh
+. ~/.zsh/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # export PATH and environment configs
-[ -f ~/.zshenv ] && source ~/.zshenv
+[ -f ~/.zsh/.zshenv ] && source ~/.zsh/.zshenv
