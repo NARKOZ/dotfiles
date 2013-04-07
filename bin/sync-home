@@ -14,42 +14,9 @@ cd ~
 for host in "$@"; do
     echo "sync: $host"
     rsync -avz --include-from=- --exclude='*' ./ "${host}:" <<FILES
-+ /.aliases
-+ /.functions
-
-+ /.inputrc
-+ /.bashrc
-+ /.zshrc
-+ /.zshenv
-+ /.dircolors
-+ /.bash_completion
-+ /.bash_completion.d
-+ /.bash_completion.d/**
-+ /.oh-my-zsh
-+ /.oh-my-zsh/**
-+ /.zsh-syntax-highlighting
-+ /.zsh-syntax-highlighting/**
-
-+ /.screenrc
-+ /.gitshrc
 + /.gitconfig
-+ /.global_ignore
-+ /.tigrc
-+ /.irbrc
++ /.gitignore_global
 + /.gemrc
-
-+ /.vimrc
-+ /.gvimrc
-+ /.vim
-- /.vim/sessions
-- /.vim/plugin/netrwPlugin.vim
-- /.vim/plugin/ruby_debugger.vim
-- /.vim/swap
-- /.vim/.netrwhist
-- /.vim/tmp
-+ /.vim/backup
-- /.vim/backup/**
-+ /.vim/**
 
 + /bin
 + /bin/ack
