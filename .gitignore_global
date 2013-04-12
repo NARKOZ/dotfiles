@@ -66,6 +66,21 @@ Session.vim
 *.pyc
 local_settings.py
 
+## Node
+lib-cov
+*.seed
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+*.gz
+pids
+logs
+results
+npm-debug.log
+node_modules
+
 ## Objective-C
 
 # Xcode
