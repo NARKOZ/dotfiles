@@ -79,6 +79,8 @@ alias 200='rvm use 2.0.0'
 alias gm='gm'
 alias gi='gem install'
 alias optall='optipng -o7 *.png' # optimize png images
+alias v='vi .'
+alias t='tmux'
 
 # eheheh :>
 alias bitch='sudo'
