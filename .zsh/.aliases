@@ -42,13 +42,21 @@ alias l.='ls -d .[^.]*'
 alias lsld='ls -ld *(-/DN)'
 alias md='mkdir -p'
 alias rd='rmdir'
-alias ls='ls -FG'
 alias ctar='tar -cvzf'
 alias xtar='tar -xvzf'
 alias fn='find . -name'
 alias system='uname -sr'
 alias lo='logout'
 alias x='exit'
+
+case "${OSTYPE}" in
+darwin*)
+    alias ls="ls -F -G"
+    ;;
+freebsd*|linux*)
+    alias ls="ls -F --color=auto"
+    ;;
+esac
 
 # convert from UPPER to lower (or back)
 alias UP2low='for i in *(.); mv $i ${i:l}'
