@@ -6,7 +6,7 @@ ZSH=$HOME/.zsh/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="cloud"
-# not bad themes: robbyrussell kennethreitz kphoen juanghurtado macovsky simple sunrise
+ZSH_THEME_CLOUD_PREFIX="✘╹◡╹✘"
 
 # Set to this to use case-sensitive completion
 # export CASE_SENSITIVE="true"
