@@ -299,3 +299,4 @@ au BufRead,BufNewFile *.markdown   set ft=mkd tw=80 ts=2 sw=2 expandtab
 
 au Filetype gitcommit set tw=68  spell
 au Filetype ruby      set tw=80  ts=2
+au Filetype slim      set tw=0
