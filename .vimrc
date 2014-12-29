@@ -51,8 +51,7 @@ Bundle 'StanAngeloff/php.vim'
 Bundle 'HTML-AutoCloseTag'
 Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
-Bundle 'digitaltoad/vim-jade'
-Bundle 'wavded/vim-stylus'
+Bundle 'elixir-lang/vim-elixir'
 
 filetype plugin indent on              " required
 
