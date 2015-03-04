@@ -47,11 +47,12 @@ Bundle 'Lokaltog/vim-powerline'
 Bundle 'Townk/vim-autoclose'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'pangloss/vim-javascript'
-Bundle 'StanAngeloff/php.vim'
 Bundle 'HTML-AutoCloseTag'
 Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
 Bundle 'elixir-lang/vim-elixir'
+Bundle 'othree/html5.vim'
+Bundle 'junegunn/goyo.vim'
 
 filetype plugin indent on              " required
 
@@ -71,13 +72,24 @@ let g:gist_post_private = 1
 
 let g:Powerline_symbols = 'fancy'
 let g:Powerline_colorscheme = 'solarized'
-" call Pl#Theme#InsertSegment('ws_marker', 'after', 'lineinfo')
 
 " --------------------------------------------------------------------------
 " NeoComplCache
 " --------------------------------------------------------------------------
 
 let g:neocomplcache_enable_at_startup = 1
+
+" <CR>: close popup and save indent
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+endfunction
+
+" --------------------------------------------------------------------------
+" Syntastic
+" --------------------------------------------------------------------------
+
+let g:syntastic_check_on_open = 1
 
 " --------------------------------------------------------------------------
 " NERD_commenter.vim
@@ -255,6 +267,9 @@ map ,f :tabnew <cfile><CR>
 
 " nerdtree mappings
 map ,z :NERDTreeToggle<CR>
+
+" goyo mappings
+map ,g :Goyo<CR>
 
 " navigation
 map <Space> <PageDown>
