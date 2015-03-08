@@ -8,7 +8,7 @@
 # http://gist.github.com/287717
 exec sh -c "tail -n +$(($LINENO + 2)) < $0 | sed s/DATE/$(date +%Y)/"
 
-Copyright (c) DATE, Nihad Abbasov <http://narkoz.me/about>
+Copyright (c) DATE, Nihad Abbasov <mail@narkoz.me>
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
