@@ -97,6 +97,9 @@ let g:syntastic_check_on_open = 1
 
 let g:NERDSpaceDelims = 1
 
+autocmd vimenter * if &filetype !=# 'gitcommit' | NERDTree | wincmd p | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
 " --------------------------------------------------------------------------
 " ctrlp.vim
 " --------------------------------------------------------------------------
